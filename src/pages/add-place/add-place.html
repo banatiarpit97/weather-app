@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)='dismiss()'>
+        <span ion-text color='primary' showWhen='ios'>Cancel</span>
+        <ion-icon name='md-close' showWhen='android, windows'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Add Place</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]='addPlace' (ngSubmit)='savePlace()'>
+  
+  <ion-list>
+     <ion-item>
+       <ion-label floating>Label</ion-label>
+       <ion-input type="text" formControlName = 'title'></ion-input>
+     </ion-item>
+        
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 (click)='choseCity()'>
+            <ion-item>
+              <ion-label floating>City</ion-label>
+              <ion-input type="text" formControlName = 'city'></ion-input>
+              
+            </ion-item>
+          </ion-col>
+      
+          <ion-col col-6 (click)='open()'>
+            <ion-item>
+              <ion-label floating>Country</ion-label>
+              <ion-input type="text" formControlName = 'country'></ion-input>
+              <div>
+                <ion-list>
+                  <ion-item *ngFor='let city of cities'>
+                    {{city}}
+                  </ion-item>
+                </ion-list>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="divider">
+        <b>OR</b>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>Latitude</ion-label>
+              <ion-input type="number" formControlName = 'latitude'></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-6>
+            <ion-item>
+              <ion-label floating>Longitude</ion-label>
+              <ion-input type="number" formControlName = 'longitude'></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="divider">
+        <b>OR</b>
+      </div>
+
+      <!-- <ion-item class="currentLocation" no-lines>
+        <input type="button" ion-button color='primary' (click)='getCurrentLocation()' value="Current Location">
+      </ion-item> -->
+<div class="location_div">
+      <ion-chip (click)='getCurrentLocation()' color='primary'>
+        <ion-icon name="pin" color="dark"></ion-icon>
+        <ion-label>Current Location</ion-label>
+      </ion-chip>
+</div>
+      <ion-item no-lines>
+        <button ion-button color='secondary' block large type="submit" [disabled] = '!addPlace.valid'>Save</button>
+      </ion-item>
+
+
+
+   </ion-list>
+  </form>
+      <!-- <div>
+        <ion-list>
+          <ion-item *ngFor='let city of cities'>
+            {{city}}
+          </ion-item>
+        </ion-list>
+      </div>
+
+    <ion-auto-complete [dataProvider]="list"></ion-auto-complete>
+   -->
+  </ion-content>

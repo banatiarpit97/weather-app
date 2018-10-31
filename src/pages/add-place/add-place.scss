@@ -1,0 +1,18 @@
+page-add-place {
+  div.divider{
+    transform: translateY(10px);
+    text-align: center;
+  }
+  ion-grid{
+      padding-top: 0;
+  }  
+  .currentLocation{
+      text-align: center;
+      margin-top: 2%;
+  }
+  .location_div{
+    text-align: center;
+    margin-top: 6%;
+  }
+  
+}

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{showWeather.label}}</ion-title>
+        <ion-buttons end class="add">
+          <button ion-button icon-only (click)="addPlace()" large color="secondary">
+            <ion-icon name="add-circle" class="add_icon"></ion-icon>
+          </button>
+        </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content color='primary'>
+   <ion-refresher (ionRefresh)="refresh($event)">
+        <ion-refresher-content pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+     
+  <!-- <div *ngFor = "let weather of allWeathers"> -->
+    <p class="name">{{showWeather.name}}</p>
+    <div class="date-time">
+      <span class="date">{{showWeather.now.date}}</span>
+      <span class="time">{{showWeather.now.time}}</span>
+  </div>
+  <div class="weather" (click)='showNowDetails(showWeather)'>
+      <span class="icon"><img src={{showWeather.now.icon}} alt=""></span>
+      <span class="temp">{{showWeather.now.temp}}</span><span class="celcius">&#8451;</span>
+  </div>    
+  <p class="type">{{showWeather.now.type}}</p>
+   
+   <!-- <p>{{weather.min_temp}} &#8451;</p>
+   <p>{{weather.max_temp}} &#8451;</p> -->
+
+  <!-- </div> -->
+  
+  <h5 class="hourly_heading">Today's Forecast</h5>
+  <ion-card class="hourly_card">
+   <ion-grid>
+      <ion-row>
+        <ion-col col-3 *ngFor="let hour of showWeather.hourlyForecast; let i=index" class="hour_col" (click)='showHourDetails(hour)'>
+          <!-- <div *ngIf="i<4"> -->
+          <p><img src={{hour.icon}} class="hour_icon"></p>
+          <p>{{hour.time}}</p>
+          <!-- </div> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+    <!-- <div *ngFor="let hour of placeWeather.hourlyForecast" class="hour">
+      <p class='hour_icon'><img src={{hour.icon}}></p>
+      <p>{{hour.time}}</p>
+    </div> -->
+  </ion-card>
+
+    <h5 class="hourly_heading">Daily Forecast</h5><span>{{daily_time}}</span>
+    <ion-card class="hourly_card">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2 *ngFor="let day of showWeather.dailyForecast; let i=index" class="day_col" (click)='showDailyDetails(day.date, day.time)'>
+            <p>
+              <img src={{day.icon}} class="hour_icon">
+            </p>
+            <p>{{day.day}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      <!-- <div *ngFor="let hour of placeWeather.hourlyForecast" class="hour">
+          <p class='hour_icon'><img src={{hour.icon}}></p>
+          <p>{{hour.time}}</p>
+        </div> -->
+    </ion-card>
+
+</ion-content>

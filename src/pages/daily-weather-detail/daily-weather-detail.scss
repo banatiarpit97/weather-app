@@ -1,0 +1,81 @@
+page-daily-weather-detail {
+  ion-content{
+      text-align: center;
+    //   background-color:#f3eded !important;
+  }  
+  .date, .time{
+    margin-top: 5px;
+    font-size: 1.1em;
+    // float: left;
+  }
+  .time{
+      margin-left: 10px;
+  }
+  .name{
+      font-size: 2.3em;
+      margin-bottom: 0;
+  }
+  .icon img{
+      height: 100px;
+      transform: translateY(26px);
+  }
+  .weather{
+      transform: translateY(-30px);
+  }
+  .temp{
+      font-size: 4em;
+  }
+  .celcius{
+      font-size: 3em;
+  }
+  .type{
+      font-size: 1.5em;
+      transform: translateY(-14px);
+      margin-top: -13px;
+  }
+  .hourly_card{
+      margin: 0;
+      width: 100% !important;
+      margin-bottom: 6%;
+  }
+  .hourly_card ion-grid{
+      padding: 0;
+  }
+  .hourly_heading{
+      float: left;
+      margin: 0;
+      margin-left: 4%;
+  }
+  .hour{
+      float: left;
+  }
+  .hour_icon{
+      width: 60px;
+      margin: auto;
+  }
+  .hour_col{
+      padding: 0;
+  }
+  .day_col{
+      padding: 0;
+      min-width: 20%;
+  }
+  .add{
+    margin-right: 2%;
+  }
+  .add ion-icon{
+    font-size: 2.5em !important;
+  }
+  ion-card{
+      background-color: #edf5e7;
+  }
+  .alert-wrapper, .alert-head{
+      overflow: scroll !important;
+  }
+  .alert-button-group button{
+      height: 20px !important;
+  }
+  .scroll{
+      overflow: scroll !important;
+  }
+}

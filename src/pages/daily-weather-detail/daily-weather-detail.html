@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar>
+        <ion-buttons start>
+          <button ion-button (click)='dismiss()'>
+            <span ion-text color='primary' showWhen='ios'>Cancel</span>
+            <ion-icon name='md-close' showWhen='android, windows'></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>{{label}} - {{nw.day}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content color='primary'>
+
+  <p class="name">{{name}}</p>
+  <div class="date-time">
+    <span class="date">{{nw.date}}</span>
+    <span class="time">{{nw.time}}</span>
+  </div>
+  <div class="weather" (click)='showNowDetails(nw)'>
+    <span class="icon">
+      <img src={{nw.icon}} alt="">
+    </span>
+    <span class="temp">{{nw.tmp}}</span>
+    <span class="celcius">&#8451;</span>
+  </div>
+  <p class="type">{{nw.all.weather[0].main}}</p>
+
+  <h5 class="hourly_heading">{{nw.day}}'s Forecast</h5>
+  <ion-card class="hourly_card">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3 *ngFor="let hour of hours" class="hour_col" (click)='showHourDetails(hour)'>
+          <p>
+            <img src={{hour.icon}} class="hour_icon">
+          </p>
+          <p>{{hour.time}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card> 
+</ion-content>
+
